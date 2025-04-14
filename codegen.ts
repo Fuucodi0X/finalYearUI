@@ -1,7 +1,10 @@
 import { CodegenConfig } from '@graphql-codegen/cli';
+import dotenv from 'dotenv';
+
+dotenv.config(); // Load env vars from .env
 
 const config: CodegenConfig = {
-  schema: "http://localhost:3280/graphql",
+  schema: process.env.VITE_GRAPHQL_URL,
   // this assumes that all your source files are in a top-level `src/` directory - you might need to adjust this to your file structure
   documents: ['src/**/*.{ts,tsx}'],
   generates: {
